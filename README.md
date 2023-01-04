@@ -5,7 +5,7 @@ The index file will automatically update when the page is reopened (so you don't
 
 If you add an icon file (`icon.jpg`) to the same folder as `index.html`, the home screen shortcut will get that icon.
 
-In order to make `index.html work properly, you need to enable the following IAM policy for the bucket:
+In order to make `index.html` work properly, you need to enable the following IAM policy for the bucket:
 
 ```
 {
