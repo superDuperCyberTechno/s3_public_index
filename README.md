@@ -1,4 +1,4 @@
-Pop `index.html` into your public bucket and you have yourself a usable index to browse.
+Pop `index.html` into your public bucket and you have yourself a usable index to browse. All the other examples I found was extremely convoluted and janky. This isn't.
 
 This file is compatible with the iOS home screen: From Safari go to "Share" and then "Add to home screen", this will add an icon to your home screen for super quick usage.
 The index file will automatically update when the page is reopened (so you don't need to close the "app" every time you update your bucket). 
