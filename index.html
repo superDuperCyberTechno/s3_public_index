@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            body{
+                background:black;
+                color:white;
+                font-size:20px;
+                margin:0;
+                font-family:monospace;
+            }
+
+            a {
+                display:block;
+                margin-bottom:.5rem;
+                background:white;
+                color:black;
+                text-decoration:none;
+            }
+        </style>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="apple-touch-icon" href="icon.jpg">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>S3 public</title>
+    </head>
+    <body>
+        <script>
+            var url_string = window.location.href;
+            var bucket = url_string.substr(0, url_string.indexOf('index.html'));
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", bucket, false);
+            xmlHttp.send(null);
+            var listing = xmlHttp.responseText;
+            var chopped = listing.split('<Key>')
+
+            var ignore = [
+                'index.html',
+                'icon.jpg'
+            ];
+
+            chopped.forEach((el) => {
+                var file_name = el.substr(0, el.indexOf('</Key>'));
+                if(!ignore.includes(file_name)){
+                    document.body.insertAdjacentHTML('beforeend', '<a href="'+bucket+file_name+'">'+file_name+'</a><br>')
+                }
+            })
+
+            document.addEventListener("visibilitychange", function() {
+                if (!document.hidden){
+                    location.reload();
+                }
+            });
+        </script>
+    </body>
+</html>
